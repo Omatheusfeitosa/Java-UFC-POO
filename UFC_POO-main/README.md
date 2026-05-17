@@ -181,7 +181,7 @@ Classe utilitária para limpar o terminal.
 ## 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone a https://github.com/Omatheusfeitosa/Java-UFC-POO/tree/main/UFC_POO-main
 ```
 
 ---
