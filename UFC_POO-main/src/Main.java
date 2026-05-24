@@ -28,13 +28,50 @@ public class Main {
         }
     }
 
-    public static int criarId(List<Lutador> listaLutador) {
+    public static int criarIdLutador(List<Lutador> listaLutador) {
         return listaLutador.size() + 1;
+    }
+    
+    public static int criarIdLuta(List<Luta> listaLuta) {
+        return listaLuta.size() + 1;
+    }
+    
+    public static Luta cadastrarLuta(List<Luta> listaLuta, List<Lutador> listaLutador) {
+
+        int novoId = criarIdLuta(listaLuta);
+
+        input.nextLine();
+ 
+        System.out.print("Digite a quantidade de rounds: ");
+        byte rounds = input.nextByte();
+
+        System.out.print("Digite o desafiante (por ID): ");
+        int idDesafiante = input.nextInt();
+
+        System.out.print("Digite o desafiado (por ID): ");
+        int idDesafiado = input.nextInt();
+        
+        if (idDesafiante == idDesafiado) {
+        		System.out.print("\nSelecione ID´s diferentes!\n");
+        		System.out.print("\nA luta não foi cadastrada!\n");
+        		return null;
+        } else {
+        	
+        		Lutador desafiante = listaLutador.get(idDesafiante-1);
+            Lutador desafiado = listaLutador.get(idDesafiado-1);
+            
+	        return new Luta(
+	                rounds,
+	                novoId,
+	                desafiado,
+	                desafiante
+	        );
+        }
     }
 
     public static Lutador cadastrarLutador(List<Lutador> listaLutador) {
 
-        int novoId = criarId(listaLutador);
+        int novoId = criarIdLutador(listaLutador);
 
         input.nextLine();
 
@@ -129,7 +166,7 @@ public class Main {
 
         List<Lutador> listaLutador = new ArrayList<>();
         List<Luta> listaLuta = new ArrayList<>();
-        List<Arbitro> listaArbitro = new ArrayList<>();
+        //List<Arbitro> listaArbitro = new ArrayList<>();
 
         listaLutador.add(new Lutador(
                 1,
@@ -259,16 +296,50 @@ public class Main {
                 case 2:
 
                     Console.limpar();
+                    
+                    int opcaoLuta;
 
-                    System.out.println("===== LUTAS =====");
+                    do {
 
-                    mostrarLutas(listaLuta);
+                        System.out.println("===== LUTAS =====");
 
-                    System.out.println("\nPressione ENTER para voltar...");
-                    input.nextLine();
-                    input.nextLine();
+                        mostrarLutas(listaLuta);
 
-                    break;
+                        System.out.println("\n1 - Cadastrar Luta");
+                        System.out.println("0 - Voltar");
+
+                        System.out.print("Escolha uma opção: ");
+                        opcaoLuta = input.nextInt();
+
+                        switch (opcaoLuta) {
+
+                            case 1:
+
+                                Console.limpar();
+                                
+                                mostrarLutadores(listaLutador);
+
+                                System.out.println("===== CADASTRAR LUTA =====");
+                                                           
+                                Luta novaLuta =
+                                		cadastrarLuta(listaLuta, listaLutador);
+                                
+                                if (novaLuta != null) {
+                                		listaLuta.add(novaLuta);
+                                } 
+                                                 
+                                break;
+
+                            case 0:
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida!");
+                        }
+
+                    } while (opcaoLuta != 0);
+
+                    
 
                 case 3:
 
