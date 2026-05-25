@@ -1,4 +1,4 @@
-public class Lutador extends Pessoa {
+public class Lutador extends Pessoa implements Apresentavel {
 
     private int id;
 
@@ -74,6 +74,11 @@ public class Lutador extends Pessoa {
                 getDerrotas(),
                 getEmpates()
         );
+    }
+
+    @Override
+    public void apresentar() {
+        apresentarLutador();
     }
 
     public String statusLutador() {
@@ -169,10 +174,5 @@ public class Lutador extends Pessoa {
 
     public int getEmpates() {
         return empates;
-    }
-    
-    @Override
-    public void apresentar() {
-        apresentarLutador();
     }
 }
