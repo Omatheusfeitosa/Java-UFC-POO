@@ -170,4 +170,9 @@ public class Lutador extends Pessoa {
     public int getEmpates() {
         return empates;
     }
+    
+    @Override
+    public void apresentar() {
+        apresentarLutador();
+    }
 }

@@ -5,7 +5,7 @@ public class Luta {
     private Lutador desafiante;
     private Lutador desafiado;
     private Lutador vencedor;
-    private Arbitro arbitro;
+    // private Arbitro arbitro;
 
     private boolean status;
 
@@ -145,9 +145,9 @@ public class Luta {
 
         status = true;
 
-        if (arbitro != null) {
-            arbitro.aumentarArbitragens();
-        }
+//        if (arbitro != null) {
+//            arbitro.aumentarArbitragens();
+//        }
     }
 
     public Lutador retornarGanhador() {
@@ -170,13 +170,13 @@ public class Luta {
         this.desafiado = desafiado;
     }
 
-    public Arbitro getArbitro() {
-        return arbitro;
-    }
-
-    public void setArbitro(Arbitro arbitro) {
-        this.arbitro = arbitro;
-    }
+//    public Arbitro getArbitro() {
+//        return arbitro;
+//    }
+//
+//    public void setArbitro(Arbitro arbitro) {
+//        this.arbitro = arbitro;
+//    }
 
     public byte getRounds() {
         return rounds;
